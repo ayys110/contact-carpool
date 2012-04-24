@@ -1,8 +1,7 @@
 /**
- * BaseController.java is used for 
+ * BaseController.java is used for
  * 
- * @author chaitanya
- * Created on Apr 6, 2012
+ * @author chaitanya Created on Apr 6, 2012
  */
 package net.kv.carpool.controller;
 
@@ -16,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping(value = "/where")
-public class BaseController {
+public class BaseController
+{
 
-
-	@RequestMapping(method = RequestMethod.GET)
-	public String onGet() {
-		return "index";
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public String onGet()
+    {
+        return "index";
+    }
 }
