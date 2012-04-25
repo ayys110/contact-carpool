@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.kv.carpool.domain.LoginForm;
 import net.kv.carpool.validator.LoginValidator;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,11 +26,12 @@ public class LoginController
     private LoginValidator loginValidator;
     @Autowired
     LoginForm loginForm;
+    private Logger logger = Logger.getLogger(LoginController.class);
 
     @RequestMapping(method = RequestMethod.GET)
     public String showUserForm(ModelMap model, HttpServletRequest req)
     {
-
+        logger.debug("showUserForm");
         model.addAttribute("loginForm", loginForm);
         return "loginForm";
     }
@@ -37,6 +39,7 @@ public class LoginController
     @RequestMapping(method = RequestMethod.POST)
     public String onSubmit(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, HttpServletRequest req)
     {
+        logger.debug("onSubmit");
         loginValidator.validate(loginForm, result);
         if (result.hasErrors())
         {
