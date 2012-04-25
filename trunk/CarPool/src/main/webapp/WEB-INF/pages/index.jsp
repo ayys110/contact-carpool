@@ -8,6 +8,6 @@
 </head>
 <body>
 	<b>Welcome!</b> &nbsp;
-	<a href="index.htm">Go to index page</a>
+	<a href="where/index.do">Go to index page</a>
 </body>
 </html>
