@@ -2,36 +2,42 @@
 <!DOCTYPE log4j:configuration PUBLIC "-//LOGGER" "log4j.dtd">
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-
 	<!-- Appenders -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+			<param name="ConversionPattern" value="%-5p: %c - %m - %X{userName} - %X{sessionID}
+				%n
+				" />
 		</layout>
 	</appender>
-
+	<appender name="daily" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="File" value="application.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{MMM-dd HH:mm:ss,SSS} %p %c (%M:%L)
+				-
+				%m -- %X{userName} -- %X{sessionID}} %n " />
+		</layout>
+	</appender>
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
-
 	<logger name="org.springframework.beans">
 		<level value="info" />
 	</logger>
-	
 	<logger name="org.springframework.context">
 		<level value="info" />
 	</logger>
-
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
+		<appender-ref ref="daily" />
 	</root>
-	
 </log4j:configuration>
