@@ -8,6 +8,6 @@
 </head>
 <body>
 	<b>Welcome!</b> &nbsp;
-	<a href="where/index.do">Go to index page</a>
+	<a href="/CarPool/login.do">Go to home please click here</a>
 </body>
 </html>
