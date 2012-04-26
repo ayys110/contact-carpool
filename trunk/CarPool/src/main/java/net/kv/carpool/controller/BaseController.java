@@ -24,12 +24,12 @@ public class BaseController
     public String onGet()
     {
         logger.debug("in base controller");
-        return "index";
+        return "index1";
     }
     @RequestMapping("index")
     public String gotoindex1()
     {
         logger.debug("in base controller in gottoindex1");
-        return "index1";
+        return "index";
     }
 }
