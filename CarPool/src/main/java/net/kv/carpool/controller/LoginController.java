@@ -29,9 +29,16 @@ public class LoginController
     private Logger logger = Logger.getLogger(LoginController.class);
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showUserForm(ModelMap model, HttpServletRequest req)
+    public String showUserForm(ModelMap model, HttpServletRequest httpServletRequest)
     {
         logger.debug("showUserForm");
+
+        if (null != httpServletRequest.getUserPrincipal())
+        {
+ 
+            return "home";
+ 
+        }
         model.addAttribute("loginForm", loginForm);
         return "loginForm";
     }
